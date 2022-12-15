@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## [ 1.3.1]
+### [Fixed]
+- Fixed typo that prevented the printing of transparent upd regions for chromosomes with no variants
+
 ## [ 1.3.0]
 ### [Added]
 - Add support for flags changing DPI: `--small` (100 DPI), `--medium` (300 DPI), `--large` (1000 DPI).
