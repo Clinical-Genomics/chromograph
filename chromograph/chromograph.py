@@ -16,11 +16,14 @@ import os
 import re
 import sys
 from argparse import ArgumentParser
-import pandas
+
 import matplotlib
+import pandas
 from matplotlib import pyplot as plt
 from matplotlib.collections import BrokenBarHCollection
+
 from chromograph import __version__
+
 from .chr_utils import (
     chr_type_format,
     filter_dataframe,
@@ -887,7 +890,7 @@ def _plot_upd_regions(filepath, *args):
     for name in dict.fromkeys(is_printed):
         print("outfile: {}".format(outpath(settings["outd"], filepath, name)))
     if settings["euploid"]:
-        print_transparent_pngs(file, settings["outd"], is_printed)
+        print_transparent_pngs(filepath, settings["outd"], is_printed)
 
 
 def main():
