@@ -3,14 +3,14 @@
 
 ## What is Chromograph?
 Chromograph is a python package to create PNG images from genetics data
-such as BED and WIG files. It is primarily build to integrate with
-software form [Clinical Genomics](https://github.com/Clinical-Genomics) and
-[UPD Tool](https://github.com/bjhall/upd) but is stand-alone.
+such as BED and WIG files. It is primarily built to integrate with
+software from [Clinical Genomics](https://github.com/Clinical-Genomics),
+[UPD Tool](https://github.com/bjhall/upd) and [rhocall](https://github.com/dnil/rhocall), but is stand-alone.
 
 Chromograph viewing is integrated a js module in [Scout](https://github.com/Clinical-Genomics/scout)
 Chromograph can be used to visualise chromosomes in Scout (Screenshot from Scout with Chromograph):
 
-![screenshot](screenshot.png)
+![screenshot](https://github.com/Clinical-Genomics/chromograph/blob/main/image.jpg?raw=true)
 
 ## Usage, command line
 Chromograph as used from the command line.
