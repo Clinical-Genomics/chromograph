@@ -10,7 +10,7 @@ software from [Clinical Genomics](https://github.com/Clinical-Genomics),
 Chromograph viewing is integrated a js module in [Scout](https://github.com/Clinical-Genomics/scout)
 Chromograph can be used to visualise chromosomes in Scout (Screenshot from Scout with Chromograph):
 
-![screenshot](https://github.com/Clinical-Genomics/chromograph/blob/main/image.jpg?raw=true)
+![screenshot](https://github.com/Clinical-Genomics/chromograph/blob/main/screenshot.png?raw=true)
 
 ## Usage, command line
 Chromograph as used from the command line.
