@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Fixed
 - Readme to describe --exome option (#9)
+- Plot transparent pngs with `--euploid` when input ROH file is empty
 
 ## [ 1.3.1]
 ### [Fixed]
