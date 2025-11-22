@@ -257,7 +257,7 @@ def _read_dataframe(filepath, format):
     # dataframe = pandas.read_csv(filepath, dtype={'chrom':str, 'start':int,  'end':int,'meanCoverage':int}, names=format, sep="\t", skiprows=1)
     if dataframe.empty:
         print("Warning: No suitable data found: {}!".format(filepath))
-        sys.exit(0)
+        return dataframe
     # cast chromosome to string (read as int)
     dataframe.chrom = dataframe.chrom.astype(str)
     # delete chromosomes not in CHROMOSOME_LIST
@@ -425,6 +425,10 @@ def print_individual_pics(dataframe, infile, settings):
     axis = fig.add_subplot(111)
     plt.rcParams.update({"figure.max_open_warning": 0})
     is_printed = []
+
+    if dataframe.empty and euploid:
+        print_transparent_pngs(infile, outd, is_printed)
+
     for collection in horizontal_bar_generator(dataframe):
         axis.add_collection(collection)
         _common_settings(axis)
@@ -464,7 +468,12 @@ def print_transparent_pngs(file, outd, is_printed):
     Motivated by auxilary software not being able to handle missing output
     chromosome are missing in the wig."""
 
-    gene_build = chr_type_format(is_printed[0])
+    # If nothing has been printed assume 'chr' format, else get format from first printed
+    if not is_printed:
+        gene_build = "str"
+    else:
+        gene_build = chr_type_format(is_printed[0])
+
     for chrom in CHROMOSOMES:
         if chrom in is_printed:
             continue
@@ -637,6 +646,15 @@ def _plot_autozyg(filepath, *args):
         )
     )
     dataframe = _read_dataframe(filepath, ROH_BED_FORMAT)
+
+    if dataframe.empty:
+        if settings["euploid"]:
+            print(f"No data found in {filepath}, generating empty plots.")
+            print_individual_pics(dataframe, filepath, settings)
+        else:
+            print(f"No data found in {filepath}, skipping plotting.")
+        return
+
     dataframe["width"] = (dataframe.end - dataframe.start) + PADDING
     dataframe["colors"] = get_color["PB_HOMOZYGOUS"]
     chromosome_list = _get_chromosome_list(_is_chr_str(dataframe.chrom[0]))
